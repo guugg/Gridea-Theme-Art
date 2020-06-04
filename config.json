@@ -1,0 +1,338 @@
+{
+  "name": "Art",
+  "version": "1.0.2",
+  "author": "Bllk",
+  "repository": "https://github.com/guugg",
+  "utils": [{
+      "now": "1577006772710", 
+      "moment": "Function "
+  }],
+  "customConfig": [
+    {
+      "name": "github",
+      "label": "Github用户名",
+      "group": "个人中心",
+      "value": "guugg",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "Profilepicture",
+      "label": "个人头像",
+      "group": "个人中心",
+      "value": "/media/images/avatarx.png",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "myname",
+      "label": "我的名称",
+      "group": "个人中心",
+      "value": "Art",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "personalalbum",
+      "label": "头像背景图",
+      "group": "个人中心",
+      "value": "/media/images/sidebar.png",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "artadvanced",
+      "label": "首页公告",
+      "group": "个人中心",
+      "type": "array",
+      "value": [
+        {
+          "name": "Bllk博客,Art主题详情信息!",
+          "link": "//803344.xyz"
+        },
+        {
+          "name": "了解我的Github仓库放了什么东西!",
+          "link": "https://github.com/guugg"
+        }
+      ],
+      "arrayItems": [
+        {
+          "label": "公告标题",
+          "name": "name",
+          "type": "input",
+          "value": "微博"
+        },
+        {
+          "label": "公告链接",
+          "name": "link",
+          "type": "input",
+          "value": "http://803344.xyz/"
+        }
+      ]
+    },
+    {
+      "name": "mysocial",
+      "label": "我的社交",
+      "group": "个人中心",
+      "type": "array",
+      "value": [
+        {
+          "name": "QQ：1570875683",
+          "link": "//wpa.qq.com/msgrd?v=3&uin=1570875683&site=qq&menu=yes",
+          "icon": "fa-qq"
+        },
+        {
+          "name": "Github：guugg",
+          "link": "https://github.com/guugg",
+          "icon": "fa-github-alt"
+        }
+      ],
+      "arrayItems": [
+        {
+          "label": "名称",
+          "name": "name",
+          "type": "input",
+          "value": "微博"
+        },
+        {
+          "label": "链接",
+          "name": "link",
+          "type": "input",
+          "value": "http://localhost/"
+        },
+        {
+          "label": "图标",
+          "name": "icon",
+          "type": "input",
+          "value": "fa-weibo"
+        }
+      ],
+      "note": "个人介绍下方，图标详情 "
+    },
+
+
+    {
+      "name": "listform",
+      "label": "列表形式",
+      "group": "外观布局",
+      "value": "home",
+      "type": "radio",
+      "options": [
+        {
+          "label": "列表式（左图）",
+          "value": "home"
+        },
+        {
+          "label": "卡片式",
+          "value": "grid"
+        }
+      ],
+      "note": "使用卡片式 ; 每页文章数最好设置成双数."
+    },
+
+    {
+      "name": "glass",
+      "label": "是否开启玻璃效果(透明)",
+      "group": "外观布局",
+      "value": false,
+      "type": "switch",
+      "note": "注：开启后会增加浏览器内存消耗"
+    },
+
+
+    {
+      "name": "jpgbeijtu",
+      "label": "是否使用图片背景",
+      "group": "外观布局",
+      "value": false,
+      "type": "switch",
+      "note": "注：开启后会增加浏览器内存消耗"
+    },
+
+    {
+      "name": "containerfluid",
+      "label": "是否全屏",
+      "group": "外观布局",
+      "value": false,
+      "type": "switch",
+      "note": "根据个人爱好设置"
+    },
+
+
+    {
+      "name": "layoutys",
+      "label": "基础外观",
+      "group": "外观布局",
+      "value": "white",
+      "type": "radio",
+      "options": [
+        {
+          "label": "纯白",
+          "value": "white"
+        },
+        {
+          "label": "导航黑",
+          "value": "black"
+        },
+        {
+          "label": "全黑",
+          "value": "fullblack"
+        }
+      ],
+      "note": "包含标题及日期、分类等信息部分"
+    },
+
+    {
+      "name": "contentBgColor",
+      "label": "内容区背景色",
+      "group": "外观布局",
+      "value": "linear-gradient(to right,#d1eaa3 0,#dbc6eb 100%)",
+      "type": "input",
+      "card": "color",
+      "note": "颜色字符串:（如：#EEEEEE、rgba(255, 255, 255, 0.9)） 试试看渐变:  linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)"
+    },
+    {
+      "name": "pageBgColor",
+      "label": "网页背景图",
+      "group": "外观布局",
+      "value": "/media/images/background.jpg",
+      "type": "input",
+      "note": "颜色字符串:（如：#EEEEEE、rgba(255, 255, 255, 0.9)）"
+    },
+    {
+      "name": "featureImage",
+      "label": "文章默认缩略图",
+      "group": "外观布局",
+      "value": "/media/images/thumb.png",
+      "type": "input"
+    },
+    {
+      "name": "tagImage",
+      "label": "分类缩略图",
+      "group": "外观布局",
+      "value": "/media/images/tag.png",
+      "type": "input"
+    },
+
+   
+
+
+
+
+
+
+
+  {"name":"artmusic","label":"音乐插件","group":"音乐","value":"off","type":"select","options":[{"label":"开","value":"on"},{"label":"关","value":"off"}]},{"name":"artmusicpt","label":"歌曲平台","group":"音乐","value":"netease","type":"radio","options":[{"label":"网易云","value":"netease"},{"label":"腾讯QQ","value":"tencent"},{"label":"酷狗","value":"kugou"},{"label":"百度","value":"Baidu"},{"label":"虾米","value":"xiami"}],"note":"根据你歌曲的平台选择!"},{"name":"artmusictype","label":"音乐类型(歌单 /歌曲 /专辑 /歌手 /搜索关键字)","group":"音乐","value":"playlist","type":"radio","options":[{"label":"歌单","value":"playlist"},{"label":"歌曲","value":"song"},{"label":"专辑","value":"album"},{"label":"艺人","value":"artist"},{"label":"搜索关键字","value":"search"}],"note":"注意类型要与ID匹配,除了关键字搜索时中文;其他的一律按数字串 /比如歌单:'5034516746'!"},{"name":"artmusicid","label":"类型ID (比如类型为搜索关键字:'分手')","group":"音乐","value":"5034516746","type":"input","note":"注意类型要与ID匹配,除了关键字搜索时中文;其他的一律按数字串 /比如歌单:'5034516746'!"},{"name":"artmusicautoplay","label":"自动播放","group":"音乐","value":"true","type":"radio","options":[{"label":"自动 (好像有点不能自动)","value":"true"},{"label":"不自动","value":"false"}]},{"name":"artmusicorder","label":"随机播放","group":"音乐","value":"random","type":"radio","options":[{"label":"随机","value":"random"},{"label":"顺序","value":"list"}]},{"name":"artmusivolume","label":"默认音量","group":"音乐","value":"1","type":"input","note":"音量0.1到1 /1时最大值"},
+
+    
+{
+  "name": "valine",
+  "label": "评论插件",
+  "group": "评论",
+  "value": "off",
+  "type": "select",
+  "options": [
+    {
+      "label": "开",
+      "value": "on"
+    },
+    {
+      "label": "关",
+      "value": "off"
+    }
+  ]
+},
+{
+  "name": "valineid",
+  "label": "Valine的ID",
+  "group": "评论",
+  "value": "9ElN9sgwe**********-MdYXbMMI",
+  "type": "input"
+},
+{
+  "name": "valinekey",
+  "label": "Valine的KEY",
+  "group": "评论",
+  "value": "xgcNc4bz**********Bfjzm9",
+  "type": "input"
+},
+{
+  "name": "valineder",
+  "label": "Valine默认语",
+  "group": "评论",
+  "value": "我每天都坚持冒泡😘",
+  "type": "input",
+  "note": ""
+},
+{
+  "name": "valinepage",
+  "label": "Valine每页限制多少条评论 (数字/false)",
+  "group": "评论",
+  "value": "false",
+  "type": "input",
+  "note": "根据需求,填false则显示全部"
+},
+
+
+
+
+{
+  "name": "friendsname",
+  "label": "友联页名称",
+  "group": "友链",
+  "value": "友情链接😘",
+  "type": "input",
+  "note": ""
+},
+    {
+      "name": "friends",
+      "label": "添加友链",
+      "group": "友链",
+      "type": "array",
+      "value": [{
+          "siteName": "Bllk",
+          "siteLink": "https://803344.xyz",
+          "siteLogo": "https://803344.xyz/media/images/avatarx.png",
+          "description": "简简单单的素朴，Art 作者"
+        }],
+      "arrayItems": [
+        {
+          "label": "名称",
+          "name": "siteName",
+          "type": "input",
+          "value": ""
+        },
+        {
+          "label": "链接",
+          "name": "siteLink",
+          "type": "input",
+          "value": ""
+        },
+        {
+          "label": "Logo",
+          "name": "siteLogo",
+          "type": "input",
+          "value": ""
+        },
+        {
+          "label": "描述",
+          "name": "description",
+          "type": "textarea",
+          "value": ""
+        }
+      ],
+      "note": ""
+    },
+
+
+
+  {
+    "name": "customCss",
+    "label": "自定义CSS ( 还不支持哦 )",
+    "group": "自定义样式",
+    "value": "",
+    "type": "textarea",
+    "note": "自定义标签背景色格式 a.ctag-le-gao{background-color: #e54d42 !important}"
+  }
+  ]
+}

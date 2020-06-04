@@ -1,0 +1,35 @@
+<!-- 头部 -->
+<%- include('./blocks/header', { siteTitle: themeConfig.siteName }) %>
+<!--头部 over-->
+
+        <!-- 侧导航 -->
+        <%- include('./blocks/nav', {tags: site.tags, menu: 'archives', link: '/archives'}) %>
+        <!--侧导航 over-->
+
+        <!-- 顶导航 -->
+        <%- include('./blocks/head') %>
+        <!--顶导航 over-->
+
+        <!-- 内容 -->
+<section class="pcoded-main-container" id="content">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- [ 公告 ] start -->
+                <%- include('./blocks/component/notice', { artadvanced: site.customConfig.artadvanced }) %>
+                <!-- [ 公告 ] end -->
+                <!-- [清单] start -->
+                <%- include('./blocks/component/gdy') %>
+                <!-- [清单] end -->
+            </div>
+        </div>
+    </div>
+    <!-- [ 版权 ] start -->
+    <%- include('./blocks/component/foot') %>
+    <!-- [ 版权 ] end -->
+</section>
+        <!--内容 over-->
+
+    <!-- 尾部 -->
+    <%- include('./blocks/footer') %>
+    <!--尾部 over-->

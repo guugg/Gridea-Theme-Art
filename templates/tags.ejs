@@ -1,0 +1,73 @@
+<!-- 头部 -->
+<%- include('./blocks/header', { siteTitle: themeConfig.siteName }) %>
+<!--头部 over-->
+
+        <!-- 侧导航 -->
+        <%- include('./blocks/nav', {tags: site.tags, menu: 'archives', link: '/archives'}) %>
+        <!--侧导航 over-->
+
+        <!-- 顶导航 -->
+        <%- include('./blocks/head') %>
+        <!--顶导航 over-->
+
+        <!-- 内容 -->
+<section class="pcoded-main-container" id="content">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- [ 公告 ] start -->
+                <%- include('./blocks/component/notice', { artadvanced: site.customConfig.artadvanced }) %>
+                <!-- [ 公告 ] end -->
+                <!-- [清单] start -->
+                <main class="h-v-75">
+                    <div class="container">
+                        <div class="row list-grouped">
+                            <!-- 分类列表 -->
+                            <% for(let i = 0; i < tags.length; i++) { %>
+                            <%let count = 0;%>
+                            <% for(let j = 0; j < site.posts.length; j++) { %>
+                            <% for(let k = 0; k < site.posts[j].tags.length; k++) { %>
+                            <% if (site.posts[j].tags[k].slug === tags[i].slug) { %>
+                            <%count++;break%>
+                            <% } %>
+                            <% } %>
+                            <% } %>
+                            <div class="col-md-4">
+                                <div class="list-item block">
+                                    <div class="media media-21x9">
+                                        <a class="media-content" href="<%= tags[i].link %>"
+                                            style="background-image:url(//qiniu.hankin.cn/img4.png?version=1590476751)">
+                                            <span class="overlay"></span>
+                                        </a>
+                                        <div class="media-overlay overlay-top p-3">
+                                            <small>
+                                                <i class="text-xl iconfont icon-file-text-line"></i>
+                                            </small>
+                                            <span class="h1 font-theme"><%=count%></span></div>
+                                    </div>
+                                    <div class="list-content">
+                                        <div class="list-body ">
+                                            <a href="<%= tags[i].link %>"
+                                                class="list-title text-md"><%= tags[i].name %></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                            <!-- 分类列表 / -->
+                        </div>
+                    </div>
+                </main>
+                <!-- [清单] end -->
+            </div>
+        </div>
+    </div>
+    <!-- [ 版权 ] start -->
+    <%- include('./blocks/component/foot') %>
+    <!-- [ 版权 ] end -->
+</section>
+        <!--内容 over-->
+
+    <!-- 尾部 -->
+    <%- include('./blocks/footer') %>
+    <!--尾部 over-->

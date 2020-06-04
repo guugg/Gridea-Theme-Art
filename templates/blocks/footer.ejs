@@ -1,0 +1,125 @@
+</div>
+<!--定义全局变量--> 
+<script type="text/javascript">
+window.THEME_URL = '<%= themeConfig.domain %>'; //获取域名地址 
+window.ENCODE_URI_COMPONENT_TITLE = document.title; 
+window.ENCODE_URI_COMPONENT_LINK = this.location.href; 
+window.ENCODE_URI_COMPONENT_IMAGE = '<%= themeConfig.domain %>/media/images/thumb.png';//分享出去的海波
+window.IS_PAGE_SINGLE = 0;
+window.IS_SLIDER = 1;
+</script>
+
+<% if (site.customConfig.artmusic == "on") { %>
+<!-- 音乐 -->
+<meting-js server="<%= site.customConfig.artmusicpt %>" type="<%= site.customConfig.artmusictype %>"
+  id="<%= site.customConfig.artmusicid %>" fixed="true"
+  autoplay="<%= site.customConfig.artmusicautoplay %>" theme="#9ccc66" order="<%= site.customConfig.artmusicorder %>"
+  volume="<%= site.customConfig.artmusivolume %>"></meting-js>
+<!-- 音乐 -->
+<% } %>
+
+
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/jquery.js"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/popper.min.js"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/highlight/highlight.min.js"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/pjax.js"></script>
+
+
+
+<!-- 分享插件 start-->
+<div id="cz-leftside-share"></div>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/jquery.share.min.js"></script>
+<!-- 分享插件 end-->
+<!-- 灯箱 -->
+  <script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/fancybox.min.js"></script>
+  
+<% if (site.customConfig.artmusic == "on") { %>
+  <!--音乐-->
+  <script src="<%= themeConfig.domain %>/media/plugins/aplayer/APlayer.min.js"></script>
+  <script src="<%= themeConfig.domain %>/media/plugins/aplayer/Meting.min.js"></script>
+<% } %>
+
+<!-- 文章目录 -->
+<script src="<%= themeConfig.domain %>/media/plugins/tocify/toc.js"></script>
+<!-- 无刷新 -->
+
+<script src="<%= themeConfig.domain %>/media/plugins/jquery/jquery.infinitescroll.min.js"></script>
+<!-- 自定义 -->
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/main.js"></script>
+
+
+
+
+
+
+
+
+<!--网站统计代码 start-->
+<!--网站统计代码 end-->
+<!-- [ modal ] start -->
+ <div class="modal fade bd-example-modal-lg" id="gratuityModal" tabindex="-1" role="dialog" aria-labelledby="gratuityModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="gratuityModalLabel">赞赏作者</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="qr_pay">
+                        <img src="<%= themeConfig.domain %>/media/images/zfb.jpg" class="qr_pay_alipay" style="display: block;">
+                        <img src="<%= themeConfig.domain %>/media/images/wx.jpg" class="qr_pay_wechatpay" style="display: none;">
+                   </div>
+      </div>
+      <div class="modal-footer">
+        <p class="text-center text-muted">请通过微信、支付宝 APP 扫一扫 </p>
+        <p class="text-center text-muted">感谢您对作者的支持！</p>
+        <p class="text-center text-muted"> 
+          <a class="btn btn-primary btn-like btn-link-like2" href="javascript:void(0);" id="qr_pay_alipay_click">&nbsp;支付宝</a>
+          <a class="btn btn-success mt-3 mb-3" href="javascript:void(0);" id="qr_pay_wechatpay_click">微信支付</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#qr_pay_alipay_click").click(function(){
+        $(".qr_pay_wechatpay").hide();
+      $(".qr_pay_alipay").css({"display":"block"});
+  });
+  $("#qr_pay_wechatpay_click").click(function(){
+      $(".qr_pay_wechatpay").css({"display":"block"});
+      $(".qr_pay_alipay").hide();
+  });
+
+    // 重载函数
+    function hljsLoino() {
+<% if (site.customConfig.valine == "on") { %>
+   // 评论
+    new Valine({
+      el: '#vcomments',
+      appId: '<%= site.customConfig.valineid %>',
+      appKey: '<%= site.customConfig.valinekey %>',
+      placeholder: '<%= site.customConfig.valineder %>',
+      enableQQ: true,//QQ
+      boolean: true,//QQ
+      pageSize: <%= site.customConfig.valinepage %>, // 文章列表
+      avatar: 'monsterid',//头像
+      visitor: true, // 阅读量统计
+      requiredFields: ['nick', 'mail'], //设置必填项
+      path: window.location.pathname // **请确保必须写该属性
+    });
+<%} %>
+
+  }
+  hljsLoino();
+</script>
+
+
+<!-- [ modal ] end -->
+</body>
+
+</html>

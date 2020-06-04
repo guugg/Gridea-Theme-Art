@@ -1,0 +1,69 @@
+<% 
+let map = new Map(); 
+map.set('/','home'); 
+map.set('/github','github'); 
+map.set('/archives', 'list'); 
+map.set('/tags','tag');
+map.set('/links','users');
+map.set('/post/about', 'user')
+map.set('/image','image'); 
+map.set('/post/about','user');
+ %>
+<nav class="
+pcoded-navbar menu-light
+ ">
+  <div class="navbar-wrapper  ">
+    <div class="navbar-content scroll-div ">
+
+      <ul class="nav pcoded-inner-navbar ">
+        <li class="nav-item pcoded-menu-caption">
+          <label>导航</label>
+        </li>
+      </ul>
+      <!-- 导航 -->
+      <ul class="nav pcoded-inner-navbar">
+                  <% for (let i=0; i < menus.length; i++) { %>
+                  <% let menu = menus[i]; %>
+                  <li>
+                    <% let target = menu.openType === 'External'?'_blank':'_self'; let href = menu.link === '/' ? '/': menu.link + '/' %>
+                    <a href="<%= href %>" target="<%= target %>">
+                      <span class="pcoded-micon"><i class="feather icon-<%= map.get(menu.link) || 'globe'%>"></i></span><%= menu.name %>
+                    </a>
+                  </li>
+                  <% } %>
+      </ul>
+      <ul class="nav pcoded-inner-navbar ">
+        <li class="nav-item pcoded-menu-caption">
+          <label>组成</label>
+        </li>
+      </ul>
+      <!-- 把标签做成分类 -->
+      <ul class="nav pcoded-inner-navbar ">
+        <li>
+          <a href="javascript:void(0)" no-pjax="" class="nav-link pcoded-submenu-click">
+            <span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span
+              class="pcoded-mtext">分类</span></a>
+          <ul class="pcoded-submenu" data="off" style="display: none;">
+                            <!-- 分类列表 -->
+                          <% for(let i = 0; i < tags.length; i++) { %>
+                          <%let count = 0;%>
+                          <% for(let j = 0; j < site.posts.length; j++) { %>
+                          <% for(let k = 0; k < site.posts[j].tags.length; k++) { %>
+                          <% if (site.posts[j].tags[k].slug === tags[i].slug) { %>
+                          <%count++;break%>
+                          <% } %>
+                          <% } %>
+                          <% } %>
+                          <li>
+                            <a href="<%= tags[i].link %>" rel="<%=count%>">
+                              <span class="pcoded-micon"><i class="feather icon-activity"></i></span><span><%= tags[i].name %></span></a>
+                          </li>
+                          <% } %>
+                            <!-- 分类列表 / -->
+          </ul>
+        </li>
+      </ul>
+      <!-- 把标签做成分类 结束-->
+    </div>
+  </div>
+</nav>

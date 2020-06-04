@@ -1,0 +1,105 @@
+
+
+
+<% if (site.customConfig.listform === 'home') { %>
+
+<div class="list-box">
+  <div class="card list-item block card-plain">
+    <div class="media media-3x2 col-4 col-md-4">
+      <a class="media-content" href="<%= link %>"
+        style="background-image: url('<% if (feature) { %><%= feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');">
+        <span class="overlay"></span>
+      </a>
+    </div>
+    <div class="list-content">
+      <div class="list-body">
+        <a href="<%= link %>" class="list-title text-lg h-2x">
+          <!-- 标题 -->
+          <%= title %>
+        </a>
+        <div class="list-desc d-none d-md-block text-sm text-secondary my-3">
+          <div class="h-2x ">
+            <!-- 摘要 -->
+            <%- description %>
+          </div>
+        </div>
+      </div>
+      <div class="list-footer">
+        <div class="d-flex flex-fill align-items-center text-muted text-xs">
+          <div class="d-none d-md-inline-block">
+            <a target="_blank" class="flex-avatar w-20 ">
+              <img alt="hankin" src="<%= site.customConfig.Profilepicture %>" class="avatar avatar-20 photo" height="20"
+                width="20"> </a>
+          </div>
+          <div class="d-inline-block ml-md-2">
+            <!-- 用户 -->
+            <a title="由<%= siteName %>发布" rel="author"><%= siteName %></a>
+          </div>
+          <div class="d-inline-block mx-1 mx-md-2">
+            <i class="text-primary">—</i>
+          </div>
+          <!-- 分类 -->
+          <% tags.forEach(function(tag, index) { %>
+          <div class="d-inline-block">
+            <a href="<%= tag.link %>"><%= tag.name %></a>
+          </div>
+          <% }); %>
+          <div class="flex-fill">
+          </div>
+          <div>
+            <!-- 时间 -->
+            <time class="mx-1"><%= site.utils.moment(date).locale('zh-cn').fromNow() %> </time>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% } else if (site.customConfig.listform === 'grid') { %>
+
+<div class="list-box">
+  <div class="col-md-6">
+    <div class="list-item-column card card-featured p-0 box-grid">
+      <div class="list-content p-0">
+        <div class="media media-16x9">
+          <a class="media-content" title="<%= title %>" href="<%= link %>"
+            style="background-image:url('<% if (feature) { %><%= feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');border-radius: 4px 4px 0 0;">
+            <span class="overlay"></span>
+          </a>
+        </div>
+        <a href="<%= link %>" class="grid_author_avt">
+          <div class="grid_author_bggo avatar bg-cover"
+            style="background-image: url(<%= site.customConfig.Profilepicture %>);"></div>
+
+        </a>
+        <div class="list-body pt-3 pl-3 pr-3">
+          <a class="list-title text-sm h-2x mb-2 mb-md-3 text-hidden" title="<%= title %>" href="<%= link %>">
+            <%= title %> </a>
+        </div>
+        <div class="mb-2 mb-md-3 pl-3 pr-3">
+          <div class="d-flex flex-fill align-items-center text-muted text-xs">
+            <div class="d-inline-block ml-md-2">
+              <a title="由<%= siteName %>发布" rel="author"><%= siteName %></a>
+            </div>
+            <div class="d-inline-block mx-1 mx-md-2">
+              <i class="text-primary">—</i></div>
+            <% tags.forEach(function(tag, index) { %>
+            <div class="d-inline-block">
+              <a href="<%= tag.link %>"><%= tag.name %></a>
+            </div>
+            <% }); %>
+            <div class="flex-fill"></div>
+            <div>
+              <time class="mx-1"><%= site.utils.moment(date).locale('zh-cn').fromNow() %> </time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% } %>
+
+

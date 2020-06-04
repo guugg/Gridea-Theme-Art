@@ -1,0 +1,15 @@
+<!-- 公告 -->
+			<div class="notice breadcrumb" id="notice">
+				<ul class="notice-list" style="margin-top: 0px;">
+<% if (artadvanced) { %>
+<% for (let i = 0; i < artadvanced.length; i++) {%>
+<li>
+	<a href="<%= artadvanced[i].link %>" target="_blank" title="<%= artadvanced[i].name %>">
+		<i class="feather icon-volume-2"></i><%= artadvanced[i].name %>
+	</a>
+</li>
+<% } %>
+<% } %>
+				</ul>
+			</div>
+										

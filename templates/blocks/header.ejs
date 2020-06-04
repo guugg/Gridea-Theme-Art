@@ -1,0 +1,65 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<title><%= siteTitle %></title>
+<meta name="description" content="<%- themeConfig.siteDescription %>" />
+
+<link rel="shortcut icon" href="<%= themeConfig.domain %>/favicon.ico">
+<meta name='robots' content='noindex,nofollow'>
+
+<SCRIPT language=javascript>
+            window.onerror=function() { return true; }
+</SCRIPT>
+
+<script type='text/javascript' src='<%= themeConfig.domain %>/media/js/jquery-1.12.4-wp.js'></script>
+<script type='text/javascript' src='<%= themeConfig.domain %>/media/js/jquery-migrate.min-1.4.1.js'></script><!-- 应用迁移辅助插件 -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/style.css">
+<link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/main.css">
+<link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/monokai_sublime.min.css">
+<!-- main.less -->
+<link rel="stylesheet"  href="<%= themeConfig.domain %>/styles/main.css">
+<!-- 目录索引 start-->
+<link href="<%= themeConfig.domain %>/media/plugins/tocify/toc.css" rel="stylesheet">
+<% if (site.customConfig.valine == "on") { %>
+<!-- 评论 -->
+<script src="<%= themeConfig.domain %>/media/js/plugins/av-min.js"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/Valine.Pure.js"></script>
+<%} %>
+
+
+
+<% if (site.customConfig.artmusic == "on") { %>
+<!--音乐-->
+<link rel="stylesheet" href="<%= themeConfig.domain %>/media/plugins/aplayer/APlayer.min.css">
+<% } %>
+
+<link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/plugins/fancybox.min.css">
+<link rel="stylesheet" class="layout-css" id="layout-css" href=" <% if (site.customConfig.layoutys === 'white') { %> <% } else if (site.customConfig.layoutys === 'black') { %> <% } else if (site.customConfig.layoutys === 'fullblack') { %> <%= themeConfig.domain %>/media/css/layout-dark.css <% } %> ">
+
+<link rel="stylesheet" class="layout-blur-css" id="layout-blur-css" href="<% if (site.customConfig.glass) { %> <%= themeConfig.domain %>/media/css/layout-blur-css.css <% } else { %> <%} %>">
+ 
+
+<link rel="stylesheet" class="rtl-css" id="rtl-css" href="">
+
+<style>
+body[class*=background-img-]{background-size:cover;background-repeat:no-repeat;background-position:top right;background-attachment:fixed}body[class*=background-img-] .pcoded-navbar.theme-horizontal~.pcoded-header[class*=header-]{background-size:cover;background-repeat:no-repeat;background-position:top right;background-attachment:fixed}body.background-blue-img-1{background-image:url('<%= site.customConfig.pageBgColor %>');background-attachment:fixed;background-repeat:no-repeat;background-size:100% 100%;-moz-background-size:100% 100%}body.background-blue-img-1 .pcoded-navbar.theme-horizontal~.pcoded-header[class*=header-]{background-image:url('<%= site.customConfig.pageBgColor %>');background-attachment:fixed;background-repeat:no-repeat;background-size:100% 100%;-moz-background-size:100% 100%}
+</style>
+</head>
+	
+<body class="<% if (site.customConfig.jpgbeijtu) { %> background-blue-img-1 <% } else { %> background-blue <%} %>">
+
+<div id="body" class="<% if (site.customConfig.containerfluid) { %> container-fluid <% } else { %> container box-layout <%} %>">
+
+      <!-- [ 预装机 ] start -->
+      <div class="loader-bg" style="display: none">
+            <div class="loader-track">
+                  <div class="loader-fill"></div>
+            </div>
+      </div>
+      <!-- [ 预装机 ] End -->

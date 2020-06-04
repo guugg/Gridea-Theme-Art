@@ -1,0 +1,87 @@
+<!-- 头部 -->
+<%- include('./blocks/header', { siteTitle: themeConfig.siteName }) %>
+<!--头部 over-->
+
+<!-- 侧导航 -->
+<%- include('./blocks/nav', {tags: site.tags, menu: 'archives', link: '/archives'}) %>
+<!--侧导航 over-->
+
+<!-- 顶导航 -->
+<%- include('./blocks/head') %>
+<!--顶导航 over-->
+
+<!-- 内容 -->
+<!-- [ tags主要内容 ] start -->
+<section class="pcoded-main-container" id="content">
+  <div class="pcoded-content">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- [ 公告 ] start -->
+        <%- include('./blocks/component/notice', { artadvanced: site.customConfig.artadvanced }) %>
+        <!-- [ 公告 ] end -->
+        <!-- [清单] start -->
+
+
+<div class="linksna">
+  <section></section>
+  <section><%= site.customConfig.friendsname %></section>
+  <section></section>
+  <section></section>
+</div>
+<div class="row h-v-75">
+
+<% if (site.customConfig.friends) { %>
+<% for (let i = 0; i < site.customConfig.friends.length; i++) {%>
+<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+  <div class="box-grid linkscd" style="border-top:3px solid rgb(152, 212, 193);">
+    <a href="<%= site.customConfig.friends[i].siteLink %>" target="_blank" rel="noopener noreferrer" class="title">
+      <%= site.customConfig.friends[i].siteName %>
+    </a>
+    <div class="subtitle">
+      <%= site.customConfig.friends[i].description %>
+    </div>
+    <a href="<%= site.customConfig.friends[i].siteLink %>" target="_blank" rel="noopener noreferrer" class="logo"
+      style="background-image: url(&quot;<%= site.customConfig.friends[i].siteLogo %>&quot;); background-color: rgb(0, 168, 243);">
+    </a>
+  </div>
+</div>
+<% } %>
+<% } %>
+
+
+
+
+</div>
+
+
+<!--评论显示区，请插入合适的位置-->
+<div id="comments" class="comments">
+  <div class="card">
+    <!-- 调用评论 -->
+    <div class="card-body">
+      <% if (site.customConfig.valine == "on") { %>
+      <div id="vcomments"></div>
+      <% } else { %>
+      博主未开启评论功能
+      <%} %>
+    </div>
+    <!-- 调用评论 -->
+  </div>
+</div>
+
+        <!-- [清单] end -->
+      </div>
+
+
+    </div>
+  </div>
+  <!-- [ 版权 ] start -->
+  <%- include('./blocks/component/foot') %>
+  <!-- [ 版权 ] end -->
+</section>
+<!-- [ 主要内容 ] end -->
+<!--内容 over-->
+
+<!-- 尾部 -->
+<%- include('./blocks/footer') %>
+<!--尾部 over-->

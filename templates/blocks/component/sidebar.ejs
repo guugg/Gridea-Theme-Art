@@ -1,0 +1,137 @@
+
+
+			<div class="theiaStickySidebar animated fadeIn">
+				<!-- 名片 -->
+				<div id="recommended_posts">
+					<div class="card card-sm  Recommended_Posts ">
+						<div class="panel wrapper-md swiper-content">
+							<div class="swiper-container border-radius">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide media-content"
+										style="background:url(<%= site.customConfig.personalalbum %>);background-size: cover;">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="author_card-5" class="card-sm  Author_Card">
+							<div class="widget-author-cover">
+								<div class="widget-author-avatar" style="z-index:1;">
+									<div class="flex-avatar mx-2 w-80 border border-white border-2">
+										<!-- 头像 -->
+										<img class="rounded-circle" src="<%= site.customConfig.Profilepicture %>">
+									</div>
+								</div>
+							</div>
+							<div class="widget-author-meta text-center pt-4 pl-4 pr-4 pb-2">
+								<!-- 名称 -->
+								<%= site.customConfig.myname %>
+								<div class="h6 mb-3 text-lg text-c-blue">
+								</div>
+								<div class="desc text-xs mb-3 h-2x ">
+									<!-- 描述 -->
+									<%= themeConfig.siteDescription %>
+								</div>
+								<div class="row no-gutters text-center">
+									<a href="javascript:void(0);" class="col">
+										<span class="font-theme font-weight-bold text-md"><%= site.posts.length %></span>
+										<small class="d-block text-xs text-muted">文章</small></a>
+									<a href="javascript:void(0);" class="col"><span
+											class="font-theme font-weight-bold text-md"><%= site.tags.length %></span><small
+											class="d-block text-xs text-muted">分类</small></a>
+									<!-- <a href="javascript:void(0);"
+																				   class="col"><span class="font-theme font-weight-bold text-md">1</span><small
+																							 class="d-block text-xs text-muted">点赞</small></a>
+																							 <a href="javascript:void(0);"
+																				   class="col"><span class="font-theme font-weight-bold text-md">1299</span><small
+																							 class="d-block text-xs text-muted">浏览</small></a> -->
+								</div>
+							</div>
+
+	<hr class="b-wid-1 my-1" id="i_social_hr">
+	<div class="row no-gutters text-center pt-2 pb-2" id="i_social">
+		<% if (mysocial) { %>
+		<% for (let i = 0; i < mysocial.length; i++) {%>
+				<a class="col" href="<%= mysocial[i].link %>" data-toggle="tooltip" data-placement="bottom" title="<%= mysocial[i].name %>">
+					<i class="fa <%= mysocial[i].icon %>"></i>
+				</a>
+		<% } %>
+		<% } %>
+	</div>
+							
+						</div>
+					</div>
+				</div>
+							</div>
+				<!-- 名片/ -->
+				<!-- <div id="recommended_posts">
+					<div class="card card-sm  Recommended_Posts">
+						<div class="card-header widget-header">
+							博客统计<i class="bg-primary"></i>
+						</div>
+						<ul class="card-body list-group">
+							
+							<li class="list-group-item">日志总数：<%= site.posts.length %> 篇</li>
+							<li class="list-group-item">评论数目：2 条</li>
+							<li class="list-group-item">运行天数：1 天</li>
+							<li class="list-group-item">分类总数：<%= site.tags.length %> 个</li>
+							<li class="list-group-item">最后更新：2020-5-18</li>
+							<li class="list-group-item">建站日期：2020-05-18</li>
+
+						</ul>
+					</div>
+				</div> -->
+<!-- 判断是否为首页 -->
+<% if ( site.isHomepage ) { %>
+
+				<div id="recommended_posts">
+					<div id="recommended_posts_1" class="card card-sm  Recommended_Posts">
+						<div class="card-header widget-header">
+							最新文章 <i class="bg-primary"></i>
+						</div>
+						<div class="card-body">
+							<% site.posts.forEach(function(post, index) { %>
+							<% if (index < 5) { %>
+							<div class="list-grid list-rounded">
+								<div class="list-item py-2">
+									<div class="list-content py-0 mr-3">
+										<div class="list-body">
+											<a href="<%= post.link %>" class="list-title h-2x"><%= post.title %></a>
+										</div>
+										<div class="list-footer">
+											<div class="text-muted text-xs">
+												<time class="d-inline-block"><%= site.utils.moment(post.date).locale('zh-cn').fromNow() %> </time>
+											</div>
+										</div>
+									</div>
+									<div class="media media-3x2 col-4">
+										<a class="media-content" href="<%= post.link %>"
+											style="background-image:url('<% if (post.feature) { %><%= post.feature %><% } else { %><%= site.customConfig.featureImage %><%} %>')"></a>
+									</div>
+								</div>
+							</div>
+							<% } %>
+							<% }); %>
+						</div>
+					</div>
+				</div>
+
+<!-- 否则输出 -->
+<% } else { %>
+
+			<!-- 目录 -->
+			<div class="card card-sm fixed">
+				<div class="card-header widget-header">
+					文章目录<i class="bg-primary"></i>
+				</div>
+			
+				<div class="card-body layout-post-sidebar">
+					<div class="toc"></div>
+				</div>
+			</div>
+			<!-- 目录 -->
+
+<%} %>
+
+
+				<!-- 目录 -->
+				

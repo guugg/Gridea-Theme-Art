@@ -1,0 +1,68 @@
+<!-- 头部 -->
+<%- include('./blocks/header', { siteTitle: themeConfig.siteName }) %>
+<!--头部 over-->
+
+        <!-- 侧导航 -->
+        <%- include('./blocks/nav', {tags: site.tags, menu: 'archives', link: '/archives'}) %>
+        <!--侧导航 over-->
+
+        <!-- 顶导航 -->
+        <%- include('./blocks/head') %>
+        <!--顶导航 over-->
+
+        <!-- 内容 -->
+<section class="pcoded-main-container" id="content">
+    <div class="pcoded-content">
+        <div class="row">
+            <!-- 调用分类 -->
+            <% post.tags.forEach(function(tag, tagIndex) { %> <!-- 这里是判断分类链接名是否为*** -->
+            <% if (tag.slug === 'image') { %> <!-- 如果是则输出我 -->
+            <div class="col-md-12">
+                <!-- [ 面包屑 ] start -->
+                <ul class="breadcrumb" itemscope="">
+                    <a itemprop="breadcrumb" href="<%= themeConfig.domain %>">首页</a> &nbsp;&nbsp;›&nbsp;&nbsp; <a itemprop="breadcrumb"
+                        href="<%= tag.link %>"><%= tag.name %></a> &nbsp;&nbsp;›&nbsp;&nbsp;
+                    <span class="current">正文</span>
+                </ul>
+                <!-- [ 面包屑 ] end -->
+                <!-- [清单] start -->
+                <div class="list-home list-grid list-grid-padding div-black-745 imagesss" id="list-grid">
+
+                    <%- post.content %>
+
+                </div>
+                <!-- [清单] end -->
+            </div>
+            <% } else { %> <!-- 相册循环如果不是则输出这里 -->
+            <div class="col-md-8">
+                <!-- [ 面包屑 ] start -->
+                <ul class="breadcrumb" itemscope="">
+                    <a itemprop="breadcrumb" href="<%= themeConfig.domain %>">首页</a> &nbsp;&nbsp;›&nbsp;&nbsp;
+                    <span class="current">正文</span>
+                </ul>
+                <!-- [ 面包屑 ] end -->
+                <!-- [清单] start -->
+                <%- include('./blocks/component/ponr') %>
+                <!-- [清单] end -->
+            </div>
+            <div class="col-md-4">
+                <!-- [侧边栏] start -->
+                <%- include('./blocks/component/sidebar', { mysocial: site.customConfig.mysocial }) %>
+                <!-- [侧边栏] end -->
+            </div>
+            <!-- 相册循环结束 -->
+            <%} %>
+            <!-- 调用分类 / -->
+            <% }); %>
+
+        </div>
+    </div>
+    <!-- [ 版权 ] start -->
+    <%- include('./blocks/component/foot') %>
+    <!-- [ 版权 ] end -->
+</section>
+        <!--内容 over-->
+
+    <!-- 尾部 -->
+    <%- include('./blocks/footer') %>
+    <!--尾部 over-->

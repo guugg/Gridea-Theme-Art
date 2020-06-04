@@ -1,0 +1,123 @@
+<!-- 头部 -->
+<%- include('./blocks/header', { siteTitle: themeConfig.siteName }) %>
+<!--头部 over-->
+
+<!-- 侧导航 -->
+<%- include('./blocks/nav', {tags: site.tags, menu: 'archives', link: '/archives'}) %>
+<!--侧导航 over-->
+
+<!-- 顶导航 -->
+<%- include('./blocks/head') %>
+<!--顶导航 over-->
+
+<!-- 内容 -->
+<!-- [ tags主要内容 ] start -->
+<section class="pcoded-main-container" id="content">
+  <div class="pcoded-content">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- [ 公告 ] start -->
+        <%- include('./blocks/component/notice', { artadvanced: site.customConfig.artadvanced }) %>
+        <!-- [ 公告 ] end -->
+        <!-- [清单] start -->
+
+
+        <div class="github_page">
+          <nav class="loading-nav text-center m-t-lg m-b-lg">
+
+            <p class="infinite-scroll-request alert alert-danger" role="alert">
+              <i class="feather icon-activity"></i> 正在加载中~ ( Github仅允许每分钟查询10次 ! )
+            </p>
+          </nav>
+          <nav class="error-nav hide text-center m-t-lg m-b-lg">
+            <p class="infinite-scroll-request alert alert-danger" role="alert">
+              <i class="feather icon-alert-octagon"></i>加载失败！尝试重新加载
+            </p>
+          </nav>
+        </div>
+
+
+
+
+        <script type="text/javascript">
+          var githubItemTemple = '<div class="col-xs-12 col-sm-6">' +
+            '<div class="card">\n' +
+            '        <div class="p-3"><div class="github_language">{PROJECT_LANGUAGE}</div>' +
+            '          \n' +
+            '          <div class="clear">\n' +
+            '            <div class="text-center text-truncate my-2">{REPO_NAME}</div>\n' +
+            '            <div class="text-center my-2"><i class="feather icon-star-on"></i>{REPO_STARS} Stars / <i class="feather icon-share-2"></i> {REPO_FORKS} Forks</div>\n' +
+            '<div class="text-center text-truncate my-2">{REPO_DESC}</div>' +
+            '<div class="text-center my-2"><a target="_blank" href="{REPO_URL}"><i class="feather icon-navigation"></i>访问</a></div>' +
+            '          </div>\n' +
+            '        </div>\n' +
+            '      </div>' +
+            '</div>';
+          var open = function () {
+
+            var handleGithub = function () {
+              var repoContainer = $('.github_page');//成功在class里的最后展示
+              var loadingContainer = repoContainer.find(".loading-nav");//加载前字符
+              var errorContainer = repoContainer.find(".error-nav");//加载失败字符
+              $.get("https://api.github.com/users/<%= site.customConfig.github %>/repos", function (result) {
+                if (result) {
+                  loadingContainer.addClass("hide");
+                  var ul = $("<div class='col-md-12'><div class=\"row row-sm text-center " +
+                    "github_contain" +
+                    "\"></div></div>");
+                  repoContainer.append(ul);
+                  var contentContainer = $(".github_contain");
+                  for (var i in result) {
+                    var repo = result[i];
+                    repo.updated_at = repo.updated_at.substring(0, repo.updated_at.lastIndexOf("T"));
+                    if (repo.language == null) {
+                      repo.language = "未知";
+                    }
+                    //匹配替换
+                    var item = githubItemTemple.replace("{REPO_NAME}", repo.name)
+                      .replace("{REPO_URL}", repo.html_url)
+                      .replace("{REPO_STARS}", repo.stargazers_count)
+                      .replace("{REPO_FORKS}", repo.forks_count)
+                      .replace("{REPO_DESC}", repo.description)
+                      .replace("{PROJECT_LANGUAGE}", repo.language);
+                    contentContainer.append(item);
+                  }
+                } else {
+                  errorContainer.removeClass("hide");
+                }
+              });
+            };
+
+            return {
+              init: function () {
+                handleGithub();
+              }
+            }
+          };
+
+          jQuery(document).ready(function ($) {
+
+
+            $(open().init);
+          });
+
+        </script>
+
+
+
+        <!-- [清单] end -->
+      </div>
+
+
+    </div>
+  </div>
+  <!-- [ 版权 ] start -->
+  <%- include('./blocks/component/foot') %>
+  <!-- [ 版权 ] end -->
+</section>
+<!-- [ 主要内容 ] end -->
+<!--内容 over-->
+
+<!-- 尾部 -->
+<%- include('./blocks/footer') %>
+<!--尾部 over-->

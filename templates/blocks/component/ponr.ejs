@@ -1,0 +1,99 @@
+<div class="post card animated fadeIn ">
+	<div class="card-body" id="view-content">
+		<div class="post-header border-bottom border-light mb-4 pb-4">
+			<div class="d-block text-sm mt-md-1 mb-2 mb-md-3">
+				
+
+
+
+				<% post.tags.forEach(function(tag, tagIndex) { %>
+				<a href="<%= tag.link %>">
+				<span class="badge badge-primary"><%= tag.name %></span></a>
+				<% }); %>
+
+			</div>
+			<h1 class="h3 mb-3"><%= post.title %></h1>
+
+			<div class="meta d-flex align-items-center text-xs text-muted">
+				<div>
+					<time class="d-inline-block"><%= post.dateFormat %></time>
+				</div>
+				<div class="ml-auto text-sm">
+
+					<span class="mx-1">
+						<i class="fa fa-book" aria-hidden="true"></i>
+						<small><%= post.stats.minutes%>分钟</small>
+					</span>
+					<span class="mx-1">
+						<i class="fa fa-font" aria-hidden="true"></i>
+						<small><%= post.stats.words%>字</small>
+					</span>
+
+<!-- id 将作为查询条件 -->
+<span id="/<%- themeConfig.postPath %>/<%= post.fileName %>/" class="leancloud_visitors mx-1" data-flag-title="<%= post.title %>">
+			<i class="iconfont icon-eye-line" aria-hidden="true"></i>
+			<small><i class="leancloud-visitors-count">**</i></small>
+</span>
+<!-- 评论 -->
+<a class="mx-1 comments meta-info" href="<%= post.link %>#comments">
+	<i class="feather icon-message-square" aria-hidden="true"></i>
+	<span class="comment-count valine-comment-count" data-xid="/<%- themeConfig.postPath %>/<%= post.fileName %>/"> </span>
+</a>
+
+
+				</div>
+			</div>
+			<div class="border-theme bg-primary">
+			</div>
+		</div>
+		<div class="post-content">
+			<div class="nc-light-gallery">
+				<%- post.content %>
+			</div>
+		</div>
+	</div>
+	<!-- [ like ] start -->
+	<div class="donate text-center">
+		<p class="text-muted mt-3">
+			如本文“对您有用”，欢迎随意打赏作者，让我们坚持创作！
+		</p>
+		<a class="btn btn-success mt-3 mb-3" data-toggle="modal" data-target="#gratuityModal" href="javascript:void(0);" onclick="return false;" title="如本文“对您有用”，欢迎随意打赏作者，让我们坚持创作！"><i class="text-md feather icon-award mx-1"></i>打赏</a>
+	</div>
+	<!-- [ like ] end -->
+</div>
+
+<!-- [ 上下篇日志 ] start -->
+<div class="meta d-flex align-items-center text-xs text-muted">
+	<% if (post.prevPost) { %>
+	<div>
+		<a href="<%= post.prevPost.link %>"
+		   title="<%= post.prevPost.title %>">上一篇</a>
+	</div>
+	<% } %>
+	<% if (post.nextPost) { %>
+	<div class="ml-auto text-sm">
+		<a href="<%= post.nextPost.link %>"
+		   title="<%= post.nextPost.title %>">下一篇</a>
+	</div>
+	<% } %>
+</div>
+<!-- [ 上下篇日志 ] end -->
+
+
+<!--评论显示区，请插入合适的位置-->
+<div id="comments" class="comments">
+	<div class="card">
+		<!-- 调用评论 -->
+		<div class="card-body">
+<% if (site.customConfig.valine == "on") { %>
+<div id="vcomments"></div>
+<% } else { %>
+博主未开启评论功能
+<%} %>
+		</div>
+		<!-- 调用评论 -->
+	</div>
+</div>
+
+
+

@@ -1,0 +1,92 @@
+<!-- 头部 -->
+<%- include('./blocks/header', { siteTitle: themeConfig.siteName }) %>
+<!--头部 over-->
+
+<!-- 侧导航 -->
+<%- include('./blocks/nav', {tags: site.tags, menu: 'archives', link: '/archives'}) %>
+<!--侧导航 over-->
+
+<!-- 顶导航 -->
+<%- include('./blocks/head') %>
+<!--顶导航 over-->
+
+<!-- 内容 -->
+<!-- [ tags主要内容 ] start -->
+<section class="pcoded-main-container" id="content">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- [ 公告 ] start -->
+                <%- include('./blocks/component/notice', { artadvanced: site.customConfig.artadvanced }) %>
+                <!-- [ 公告 ] end -->
+                <!-- [清单] start -->
+
+  <div class="list-home list-grid list-grid-padding div-black-745" id="list-grid">
+<!-- 循环文章，循环标签，判断标签 -->
+<% site.posts.forEach(function(post, postIndex) { %>
+    <% post.tags.forEach(function(tag, index) { %>
+<% if (tag.slug === 'image') { %>
+    <div class="list-box">
+        <div class="col-sm-6">
+            <div class="list-item-column card card-featured p-0 box-grid">
+                <div class="list-content p-0">
+                    <div class="media media-16x9">
+                        <a class="media-content"
+                           title="<%= post.title %>"
+                           href="<%= post.link %>"
+                           style="background-image:url('<% if (post.feature) { %><%= post.feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');border-radius: 4px 4px 0 0;">
+                            <span class="overlay"></span>
+                        </a>
+                    </div>
+                    <a href="<%= post.link %>"
+                       class="grid_author_avt">
+                        <div class="grid_author_bggo avatar bg-cover"
+                             style="background-image: url(<%= site.customConfig.Profilepicture %>);">
+                        </div>
+                    </a>
+                    <div class="list-body pt-3 pl-3 pr-3">
+                        <a class="list-title text-sm h-2x mb-2 mb-md-3 text-hidden"
+                           title="<%= post.title %>"
+                           href="<%= post.link %>">
+                            <%= post.title %> </a>
+                    </div>
+                    <div class="mb-2 mb-md-3 pl-3 pr-3">
+                        <div class="d-flex flex-fill align-items-center text-muted text-xs">
+                            <div class="d-inline-block ml-md-2">
+                                <a href="###"
+                                   title="由<%= site.customConfig.myname %>发布"
+                                   rel="author"><%= site.customConfig.myname %></a></div>
+                            <div class="flex-fill"></div>
+                            <div>
+                                <time class="mx-1"><%= site.utils.moment(post.date).locale('zh-cn').fromNow() %></time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%} %>
+    <% }); %>
+<% }); %>
+</div>
+
+
+
+
+                <!-- [清单] end -->
+            </div>
+
+
+        </div>
+    </div>
+    <!-- [ 版权 ] start -->
+    <%- include('./blocks/component/foot') %>
+    <!-- [ 版权 ] end -->
+</section>
+<!-- [ 主要内容 ] end -->
+<!--内容 over-->
+
+<!-- 尾部 -->
+<%- include('./blocks/footer') %>
+<!--尾部 over-->
