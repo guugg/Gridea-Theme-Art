@@ -1,6 +1,6 @@
 {
   "name": "Art",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "author": "Bllk",
   "repository": "https://github.com/guugg",
   "utils": [{
@@ -113,7 +113,7 @@
 
     {
       "name": "listform",
-      "label": "列表形式",
+      "label": "文章列表形式",
       "group": "外观布局",
       "value": "home",
       "type": "radio",
@@ -131,22 +131,22 @@
     },
 
     {
-      "name": "glass",
-      "label": "是否开启玻璃效果(透明)",
+      "name": "listformd",
+      "label": "列表多排（适配差,使用可以关闭导航、侧边栏）",
       "group": "外观布局",
-      "value": false,
-      "type": "switch",
-      "note": "注：开启后会增加浏览器内存消耗"
-    },
-
-
-    {
-      "name": "jpgbeijtu",
-      "label": "是否使用图片背景",
-      "group": "外观布局",
-      "value": false,
-      "type": "switch",
-      "note": "注：开启后会增加浏览器内存消耗"
+      "value": "no",
+      "type": "radio",
+      "options": [
+        {
+          "label": "关闭",
+          "value": "no"
+        },
+        {
+          "label": "双排列表式",
+          "value": "homeer"
+        }
+      ],
+      "note": "适配不是很好，或者开启全部只需要关闭侧边栏."
     },
 
     {
@@ -157,12 +157,91 @@
       "type": "switch",
       "note": "根据个人爱好设置"
     },
+    {
+      "name": "sidoff",
+      "label": "首页侧边栏",
+      "group": "外观布局",
+      "value": "col-md-8",
+      "type": "radio",
+      "options": [
+        {
+          "label": "开启",
+          "value": "col-md-8"
+        },
+        {
+          "label": "关闭",
+          "value": "col-md-12"
+        }
+      ],
+      "note": "使用卡片式 ; 每页文章数最好设置成双数."
+    },
+    {
+      "name": "navoff",
+      "label": "侧边导航",
+      "group": "外观布局",
+      "value": "",
+      "type": "radio",
+      "options": [
+        {
+          "label": "开启",
+          "value": ""
+        },
+        {
+          "label": "关闭",
+          "value": "navbar-collapsed"
+        }
+      ],
+      "note": "如果关闭，建议开启顶部导航."
+    },
+  {
+    "name": "topnav",
+    "label": "顶部导航",
+    "group": "外观布局",
+    "type": "array",
+    "value": [],
+    "arrayItems": [
+      {
+        "label": "名称",
+        "name": "name",
+        "type": "input",
+        "value": ""
+      },
+      {
+        "label": "链接",
+        "name": "link",
+        "type": "input",
+        "value": ""
+      }
+    ],
+    "note": "个人介绍下方，图标详情 "
+  },
+
+
+
+
+
 
 
     {
+      "name": "glass",
+      "label": "是否开启玻璃效果(透明)",
+      "group": "外观样式",
+      "value": false,
+      "type": "switch",
+      "note": "注：开启后会增加浏览器内存消耗"
+    },
+    {
+      "name": "jpgbeijtu",
+      "label": "是否使用图片背景",
+      "group": "外观样式",
+      "value": false,
+      "type": "switch",
+      "note": "注：开启后会增加浏览器内存消耗"
+    },
+    {
       "name": "layoutys",
       "label": "基础外观",
-      "group": "外观布局",
+      "group": "外观样式",
       "value": "white",
       "type": "radio",
       "options": [
@@ -181,20 +260,19 @@
       ],
       "note": "包含标题及日期、分类等信息部分"
     },
-
     {
       "name": "contentBgColor",
       "label": "内容区背景色",
-      "group": "外观布局",
+      "group": "外观样式",
       "value": "linear-gradient(to right,#d1eaa3 0,#dbc6eb 100%)",
       "type": "input",
       "card": "color",
-      "note": "颜色字符串:（如：#EEEEEE、rgba(255, 255, 255, 0.9)） 试试看渐变:  linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)"
+      "note": "颜色字符串:（如：#EEEEEE、rgba(255, 255, 255, 0.9)） 试试渐变颜色:  linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)"
     },
     {
       "name": "pageBgColor",
       "label": "网页背景图",
-      "group": "外观布局",
+      "group": "外观样式",
       "value": "/media/images/background.jpg",
       "type": "input",
       "note": "颜色字符串:（如：#EEEEEE、rgba(255, 255, 255, 0.9)）"
@@ -202,19 +280,23 @@
     {
       "name": "featureImage",
       "label": "文章默认缩略图",
-      "group": "外观布局",
+      "group": "外观样式",
       "value": "/media/images/thumb.png",
       "type": "input"
     },
     {
       "name": "tagImage",
       "label": "分类缩略图",
-      "group": "外观布局",
+      "group": "外观样式",
       "value": "/media/images/tag.png",
       "type": "input"
     },
 
    
+
+
+
+
 
 
 
@@ -229,7 +311,7 @@
   "name": "valine",
   "label": "评论插件",
   "group": "评论",
-  "value": "off",
+  "value": "on",
   "type": "select",
   "options": [
     {
@@ -246,14 +328,14 @@
   "name": "valineid",
   "label": "Valine的ID",
   "group": "评论",
-  "value": "9ElN9sgwe**********-MdYXbMMI",
+  "value": "9ElN9sgweVSBS4Ie64HrTRIb-MdYXbMMI",
   "type": "input"
 },
 {
   "name": "valinekey",
   "label": "Valine的KEY",
   "group": "评论",
-  "value": "xgcNc4bz**********Bfjzm9",
+  "value": "xgcNc4bzTc0zXH1XjbBfjzm9",
   "type": "input"
 },
 {
@@ -326,6 +408,50 @@
 
 
 
+{
+  "name": "artcdn",
+  "label": "是否全站开启CDN加速",
+  "group": "CDN加速",
+  "value": "off",
+  "type": "select",
+  "options": [
+    {
+      "label": "开",
+      "value": "on"
+    },
+    {
+      "label": "关",
+      "value": "off"
+    }
+  ],
+  "note": "全站= CSS+JS+文章图片等等"
+},
+{
+  "name": "yymmm",
+  "label": "你博客的域名",
+  "group": "CDN加速",
+  "value": "https://803344.xyz",
+  "type": "input",
+  "note": "填写你目前博客的域名带http://或https:// "
+},
+{
+  "name": "cdncdn",
+  "label": "加速域名",
+  "group": "CDN加速",
+  "value": "https://cdn.jsdelivr.net/gh/guugg/guugg.github.io@master/",
+  "type": "input",
+  "note": "如果是在github则直接使用jsdelivr，如其它则填其它的加速域名。 （欢迎提供免费加速..）"
+},
+
+
+{
+  "name": "footzb",
+  "label": "底部左下角",
+  "group": "底部版权",
+  "value": "",
+  "type": "textarea",
+  "note": "底部左下角的内容，可以添加一些版权链接等等"
+},
   {
     "name": "customCss",
     "label": "自定义CSS ( 还不支持哦 )",

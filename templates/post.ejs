@@ -7,7 +7,7 @@
         <!--侧导航 over-->
 
         <!-- 顶导航 -->
-        <%- include('./blocks/head') %>
+        <%- include('./blocks/head', { topnav: site.customConfig.topnav }) %>
         <!--顶导航 over-->
 
         <!-- 内容 -->
@@ -28,7 +28,28 @@
                 <!-- [清单] start -->
                 <div class="list-home list-grid list-grid-padding div-black-745 imagesss" id="list-grid">
 
-                    <%- post.content %>
+                <%- Content();%><%  -%>
+                <%
+                function refineContent(str){
+                   indexC = str.indexOf('<img');
+                   while(indexC != -1){
+                		indexEnd = str.indexOf('>', indexC);
+                		srcImage = str.indexOf('src', indexC);
+                        domain = str.substring(srcImage + 5, srcImage + 5 + ym.length); 
+                		if (domain == ym){ 
+                			str = str.substring(0, srcImage + 5) + cdn + str.substring(str.indexOf("post-images", indexC));
+                		}
+                	    indexC = str.indexOf('<img', indexEnd);
+                   }
+                    return str;
+                }
+                function Content(){
+                    let con= post.content;
+                    con = refineContent(con);
+                    return con;
+                }
+                %>
+
 
                 </div>
                 <!-- [清单] end -->

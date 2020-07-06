@@ -2,15 +2,10 @@
 	<div class="card-body" id="view-content">
 		<div class="post-header border-bottom border-light mb-4 pb-4">
 			<div class="d-block text-sm mt-md-1 mb-2 mb-md-3">
-				
-
-
-
 				<% post.tags.forEach(function(tag, tagIndex) { %>
 				<a href="<%= tag.link %>">
 				<span class="badge badge-primary"><%= tag.name %></span></a>
 				<% }); %>
-
 			</div>
 			<h1 class="h3 mb-3"><%= post.title %></h1>
 
@@ -48,36 +43,61 @@
 		</div>
 		<div class="post-content">
 			<div class="nc-light-gallery">
-				<%- post.content %>
+				<%- Content();%><%  -%>
+                <%
+                function refineContent(str){
+
+                   indexC = str.indexOf('<img');
+                   while(indexC != -1){
+                		indexEnd = str.indexOf('>', indexC);
+                		srcImage = str.indexOf('src', indexC);
+                        domain = str.substring(srcImage + 5, srcImage + 5 + ym.length); 
+                		if (domain == ym){ 
+                			str = str.substring(0, srcImage + 5) + cdn + str.substring(str.indexOf("post-images", indexC));
+                		}
+                	    indexC = str.indexOf('<img', indexEnd);
+                   }
+                    return str;
+                }
+                function Content(){
+                    let con= post.content;
+                    con = refineContent(con);
+                    return con;
+                }
+                %>
 			</div>
 		</div>
+		
+		<hr class="content-copyright" style="margin-top:50px">
+		<div class="meta d-flex align-items-center text-xs text-muted">
+			<div>
+				<span class="d-inline-block">文章链接: <a title="<%= post.title %>" href="<%= post.link %>"> <%= post.title %> </a> </span>
+			</div>
+			<div class="ml-auto text-sm">
+				<div class="mx-1"
+					 data-toggle="tooltip"
+					 data-html="true"
+					 data-original-title="转载请保留本文转载地址，著作权归 [<%= themeConfig.siteName %>] 所有">
+					<span>© 规范转载</span>
+				</div>
+			</div>
+		</div>
+
 	</div>
+
+
+
 	<!-- [ like ] start -->
 	<div class="donate text-center">
-		<p class="text-muted mt-3">
+		<a class="btn btn-success mt-3" data-toggle="modal" data-target="#gratuityModal" href="javascript:void(0);" onclick="return false;" title="如本文“对您有用”，欢迎随意打赏作者，让我们坚持创作！"><i class="text-md feather icon-award mx-1"></i>打赏</a>
+		<p class="text-muted mt-3 mb-3">
 			如本文“对您有用”，欢迎随意打赏作者，让我们坚持创作！
 		</p>
-		<a class="btn btn-success mt-3 mb-3" data-toggle="modal" data-target="#gratuityModal" href="javascript:void(0);" onclick="return false;" title="如本文“对您有用”，欢迎随意打赏作者，让我们坚持创作！"><i class="text-md feather icon-award mx-1"></i>打赏</a>
 	</div>
 	<!-- [ like ] end -->
 </div>
 
-<!-- [ 上下篇日志 ] start -->
-<div class="meta d-flex align-items-center text-xs text-muted">
-	<% if (post.prevPost) { %>
-	<div>
-		<a href="<%= post.prevPost.link %>"
-		   title="<%= post.prevPost.title %>">上一篇</a>
-	</div>
-	<% } %>
-	<% if (post.nextPost) { %>
-	<div class="ml-auto text-sm">
-		<a href="<%= post.nextPost.link %>"
-		   title="<%= post.nextPost.title %>">下一篇</a>
-	</div>
-	<% } %>
-</div>
-<!-- [ 上下篇日志 ] end -->
+
 
 
 <!--评论显示区，请插入合适的位置-->

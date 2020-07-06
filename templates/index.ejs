@@ -7,42 +7,37 @@
         <!--侧导航 over-->
 
         <!-- 顶导航 -->
-        <%- include('./blocks/head') %>
+        <%- include('./blocks/head', { topnav: site.customConfig.topnav }) %>
         <!--顶导航 over-->
 
         <!-- 内容 -->
 <section class="pcoded-main-container" id="content">
     <div class="pcoded-content">
         <div class="row">
-            <div class="col-md-8">
+            <div class="<%= site.customConfig.sidoff %> ">
                 <!-- [ 公告 ] start -->
                 <%- include('./blocks/component/notice', { artadvanced: site.customConfig.artadvanced }) %>
                 <!-- [ 公告 ] end -->
                 <!-- [清单] start -->
-<!-- start: .articles -->
-<div class="list-home list-grid list-grid-padding div-black-745" id="list-<%= site.customConfig.listform %>">
-    <% posts.forEach(function(post, postIndex) { %>
-    <% if ( post.isTop ) { %>
-    <!-- 如果是置顶文章 -->
-<%- include('./blocks/post-zd', { title: post.title, tags: post.tags, link: post.link, description: post.description, feature: post.feature, date: post.date, siteName: themeConfig.siteName }) %>
-    <% }else{ %>
-    <!-- 如果不是置顶文章 -->
-<%- include('./blocks/post-list-zt', { title: post.title, tags: post.tags, link: post.link, description: post.description, feature: post.feature, date: post.date, siteName: themeConfig.siteName }) %>
-<% } %>
-    <% }); %>
+<div class="list-home list-grid list-grid-padding div-black-745 <% if (site.customConfig.listformd === 'homeer') { %>row<% } %>" id="list-<%= site.customConfig.listform %>">
+        <% posts.forEach(function(post, postIndex) { %>
+            <%- include('./blocks/post-list-zt', {  istop: post.isTop,  title: post.title, tags: post.tags, link: post.link, description: post.description, feature: post.feature, date: post.date, siteName: themeConfig.siteName }) %>
+        <% }); %>
 </div>
-
-       
 <div class="pagenavi text-center"><a href="<%= pagination.next %>">加载更多</a></div>
-
-<!-- 普通文章 -->
                 <!-- [清单] end -->
             </div>
-            <div class="col-md-4">
-                <!-- [侧边栏] start -->
-                <%- include('./blocks/component/sidebar', { mysocial: site.customConfig.mysocial }) %>
-                <!-- [侧边栏] end -->
-            </div>
+           
+            <% if (site.customConfig.sidoff === 'col-md-8') { %>
+                <div class="col-md-4">
+                    <%- include('./blocks/component/sidebar', { mysocial: site.customConfig.mysocial }) %>
+                </div>
+            <% } %>
+
+
+
+
+
         </div>
     </div>
     <!-- [ 版权 ] start -->

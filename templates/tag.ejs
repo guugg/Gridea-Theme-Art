@@ -7,7 +7,7 @@
         <!--侧导航 over-->
 
         <!-- 顶导航 -->
-        <%- include('./blocks/head') %>
+        <%- include('./blocks/head', { topnav: site.customConfig.topnav }) %>
         <!--顶导航 over-->
 
         <!-- 内容 -->
@@ -49,15 +49,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="list-home list-grid list-grid-padding div-black-745" id="list-home">
+                <div class="list-home list-grid list-grid-padding div-black-745 <% if (site.customConfig.listformd === 'homeer') { %>row<% } %>" id="list-home">
                     <% posts.forEach(function(post, postIndex) { %>
-                    <% if ( post.isTop ) { %>
-                    <!-- 如果是置顶文章 -->
-                    <%- include('./blocks/post-zd', { title: post.title, tags: post.tags, link: post.link, description: post.description, feature: post.feature, date: post.date, siteName: themeConfig.siteName }) %>
-                    <% }else{ %>
                     <!-- 如果不是置顶文章 -->
-                    <%- include('./blocks/post-list-zt', { title: post.title, tags: post.tags, link: post.link, description: post.description, feature: post.feature, date: post.date, siteName: themeConfig.siteName }) %>
-                    <% } %>
+                    <%- include('./blocks/post-list-zt', {  istop: post.isTop,   title: post.title, tags: post.tags, link: post.link, description: post.description, feature: post.feature, date: post.date, siteName: themeConfig.siteName }) %>
                     <% }); %>
                 </div>
 

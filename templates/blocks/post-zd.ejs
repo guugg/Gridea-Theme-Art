@@ -1,10 +1,18 @@
+<%
+function postFeature(){
+  postFeatureImg = feature;
+	if (postFeatureImg.indexOf(ym) != -1){
+		postFeatureImg = cdn + postFeatureImg.substring(postFeatureImg.indexOf("post-images"))
+	}
+	return postFeatureImg;
+}
+%>
 <% if (site.customConfig.listform === 'home') { %>
-
 <div class="list-box">
   <div class="card list-item block card-plain">
     <div class="media media-3x2 col-4 col-md-4">
       <a class="media-content" href="<%= link %>"
-        style="background-image: url('<% if (feature) { %><%= feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');">
+        style="background-image: url('<% if (feature) { %><%- postFeature();%><% -%><% } else { %><%= site.customConfig.featureImage %><%} %>');">
         <span class="overlay"></span>
       </a>
     </div>
@@ -61,7 +69,7 @@
       <div class="list-content p-0">
         <div class="media media-16x9">
           <a class="media-content" title="<%= title %>" href="<%= link %>"
-            style="background-image:url('<% if (feature) { %><%= feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');border-radius: 4px 4px 0 0;">
+            style="background-image:url('<% if (feature) { %><%- postFeature();%><% -%><% } else { %><%= site.customConfig.featureImage %><%} %>');border-radius: 4px 4px 0 0;">
             <span class="overlay"></span>
           </a>
         </div>

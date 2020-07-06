@@ -1,0 +1,76 @@
+<!-- 头部 -->
+<%- include('./blocks/header', { siteTitle: themeConfig.siteName }) %>
+<!--头部 over-->
+<!-- 侧导航 -->
+<%- include('./blocks/nav', {tags: site.tags, menu: 'archives', link: '/archives'}) %>
+<!--侧导航 over-->
+<!-- 顶导航 -->
+<%- include('./blocks/head', { topnav: site.customConfig.topnav }) %>
+<!--顶导航 over-->
+<!-- 内容 -->
+<section class="pcoded-main-container"
+         id="content">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- [ 公告 ] start -->
+                <%- include('./blocks/component/notice', { artadvanced: site.customConfig.artadvanced }) %>
+                <!-- [ 公告 ] end -->
+                <!-- [清单] start -->
+                <div class="wrapper">
+                    <div class="search my-5">
+                        <input type="text" name="s" class="inp form-control border-0 shadow-none" placeholder="请输入关键词搜索" style="background:<%= site.customConfig.contentBgColor %>;">
+                    </div>
+
+                    <div class="user">
+                       
+                    </div>
+
+                    <h3 class="prompt" style="display: none;">空空如也</h3>
+                </div>
+
+                <script>
+                    function createStore(c) { var b = []; function a() { return c } function e(f) { c[f.type] = f.value; b.forEach(function (h, g) { h() }) } function d(f) { b.push(f) } return { getState: a, change: e, addFn: d } };
+                </script>
+                <script>
+                    var person = JSON.parse('<%- outputContent(); %>');
+                    var inp = document.getElementsByClassName("inp")[0], btnList = document.getElementsByClassName("btn-list")[0], prompt = document.getElementsByClassName("prompt")[0], user = document.getElementsByClassName("user")[0]; function createList(a) { var b = ""; a.forEach(function (d, c) { b += '<div class="list-box"><div class="card list-item block card-plain"><div class="list-content"><div class="list-body"><a href="' + d.link + '" class="list-title text-lg h-2x">' + d.title + '</a><div class="list-desc d-none d-md-block text-sm text-secondary my-3"><div class="h-2x ">' + d.content + "</div></div></div></div></div></div>" }); user.innerHTML = b };
+                    createList(person.posts); var state = createStore({ text: "", sex: "all" }); state.addFn(function () { createList(perArr()); anti(show()) }); inp.oninput = anti(getInput, 1000);
+                    function getInput() { state.change({ type: "text", value: this.value }) } function anti(a, b) { var c = null; return function () { var d = this, e = arguments; clearTimeout(c); c = setTimeout(function () { a.apply(d, e) }, b) } } function show() { if (user.children.length == 0) { prompt.style.display = "block" } else { prompt.style.display = "none" } } function addFn(b, a) { return function () { var c = a; for (prop in b) { c = b[prop](state.getState()[prop], c) } return c } } var perArr = addFn({ text: filterText, sex: filterSex }, person.posts); btnList.onclick = function (b) { var a = b.target; if (a.tagName == "LI") { document.getElementsByClassName("active")[0].className = ""; a.className = "active"; state.change({ type: "sex", value: a.getAttribute("sex") }) } }; function filterText(b, a) { return a.filter(function (d, c) { if (d.title.indexOf(b) != -1 || d.content.indexOf(b) != -1) { return true } }) } function filterSex(b, a) { if (b == "all") { return a } else { return a.filter(function (d, c) { if (d.sex == b) { return true } }) } };
+                </script>
+<%
+function refineContent(str){
+   return str.replace(/(<(\/?)(\w+)[^>]*>)|(<!--[\s\S]*?-->)/g ,'')//去除html标签如<p></p>和注释
+   .replace(/\s+/g,' ')//压缩空格换行等只保留一个空格
+.replace(/(&quot;)/g ,'')//去除双引号
+}
+function outputContent(){
+let articlesContent={
+   posts:[]
+};
+site.posts.forEach(function(post, index){
+   if(!post.hideInList){
+      let postContent={
+         title:post.title,
+         content:refineContent(post.content),
+         link:post.link
+      };
+      articlesContent.posts.push(postContent);
+   }
+})
+return JSON.stringify(articlesContent);
+}
+%>
+                <!-- [清单] end -->
+            </div>
+        </div>
+    </div>
+    <!-- [ 版权 ] start -->
+    <%- include('./blocks/component/foot') %>
+    <!-- [ 版权 ] end -->
+</section>
+<!--内容 over-->
+
+<!-- 尾部 -->
+<%- include('./blocks/footer') %>
+<!--尾部 over-->

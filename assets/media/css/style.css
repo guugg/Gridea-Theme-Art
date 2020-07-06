@@ -5375,3 +5375,17 @@ new-task label input[type=checkbox]{display:none}
 #list-grid .list-box:nth-child(even) .col-sm-6{float:right;padding-right:0;}
 
 }
+
+@media (min-width: 576px) and (max-width: 1199.98px) {
+#list-grid .list-box:nth-child(odd) .col-md-4{float:left;padding-left:0;}
+#list-grid .list-box:nth-child(even) .col-md-4{float:right;padding-right:0;}
+
+}
+
+@media (min-width: 1200px) { 
+#list-grid .list-box:nth-child(odd) .col-md-3{float:left;padding-left:0;}
+#list-grid .list-box:nth-child(even) .col-md-3{float:right;padding-right:0;}
+
+}
+
+

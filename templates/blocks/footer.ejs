@@ -19,35 +19,37 @@ window.IS_SLIDER = 1;
 <% } %>
 
 
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/jquery.js"></script>
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/jquery.cookie.js"></script>
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/popper.min.js"></script>
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/highlight/highlight.min.js"></script>
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/pjax.js"></script>
+<script type="text/javascript" src="<%= cdn %>/media/js/plugins/jquery.js"></script>
+<script type="text/javascript" src="<%= cdn %>/media/js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="<%= cdn %>/media/js/plugins/popper.min.js"></script>
+<script type="text/javascript" src="<%= cdn %>/media/js/plugins/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%= cdn %>/media/js/plugins/highlight/highlight.min.js"></script>
+<script type="text/javascript" src="<%= cdn %>/media/js/plugins/pjax.js"></script>
 
 
 
 <!-- 分享插件 start-->
 <div id="cz-leftside-share"></div>
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/jquery.share.min.js"></script>
+<script type="text/javascript" src="<%= cdn %>/media/js/plugins/jquery.share.min.js"></script>
 <!-- 分享插件 end-->
 <!-- 灯箱 -->
-  <script type="text/javascript" src="<%= themeConfig.domain %>/media/js/plugins/fancybox.min.js"></script>
+  <script type="text/javascript" src="<%= cdn %>/media/js/plugins/fancybox.min.js"></script>
   
 <% if (site.customConfig.artmusic == "on") { %>
   <!--音乐-->
-  <script src="<%= themeConfig.domain %>/media/plugins/aplayer/APlayer.min.js"></script>
-  <script src="<%= themeConfig.domain %>/media/plugins/aplayer/Meting.min.js"></script>
+  <script src="<%= cdn %>/media/plugins/aplayer/APlayer.min.js"></script>
+  <script src="<%= cdn %>/media/plugins/aplayer/Meting.min.js"></script>
 <% } %>
 
 <!-- 文章目录 -->
-<script src="<%= themeConfig.domain %>/media/plugins/tocify/toc.js"></script>
+<script src="<%= cdn %>/media/plugins/tocify/toc.js"></script>
 <!-- 无刷新 -->
+<script src="<%= cdn %>/media/plugins/jquery/jquery.infinitescroll.min.js"></script>
 
-<script src="<%= themeConfig.domain %>/media/plugins/jquery/jquery.infinitescroll.min.js"></script>
+
+
 <!-- 自定义 -->
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/main.js"></script>
+<script type="text/javascript" src="<%= cdn %>/media/js/main.js"></script>
 
 
 
@@ -70,8 +72,8 @@ window.IS_SLIDER = 1;
       </div>
       <div class="modal-body p-0">
         <div class="qr_pay">
-                        <img src="<%= themeConfig.domain %>/media/images/zfb.jpg" class="qr_pay_alipay" style="display: block;">
-                        <img src="<%= themeConfig.domain %>/media/images/wx.jpg" class="qr_pay_wechatpay" style="display: none;">
+                        <img src="<%= cdn %>/media/images/zfb.jpg" class="qr_pay_alipay" style="display: block;">
+                        <img src="<%= cdn %>/media/images/wx.jpg" class="qr_pay_wechatpay" style="display: none;">
                    </div>
       </div>
       <div class="modal-footer">
